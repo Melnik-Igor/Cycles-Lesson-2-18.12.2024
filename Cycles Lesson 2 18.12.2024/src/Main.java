@@ -10,12 +10,15 @@ public class Main {
         //Результат программы должен быть выведен в консоль с тем количеством месяцев,
         // которое необходимо для накопления данной суммы. Формат сообщения:
         // «Месяц …, сумма накоплений равна … рублей» .
-        int salary = 29000;
-        int total = 0;
-        for (int i = 1; total < 2_459_000; i++) {
+        double salary = 15_000;
+        double accumulation = 2_459_000;
+        double total = 0;
+        int s = 0;
+        while (total < accumulation) {
+            s++;
             total = total + total / 100;
-            total = total + 15000;
-            System.out.println("Месяц " + i + " , сумма накоплений равна " + total + " рублей");
+            total = total + salary;
+            System.out.println("Месяц " + s + ", сумма накоплений равна " + total + " рублей");
         }
         System.out.println();
 
@@ -48,7 +51,9 @@ public class Main {
         int countryY = 12_000_000;
         int birthRate = 17;
         int mortalityRate = 8;
-        for (int year = 1; year <= 10; year++) {
+        for (
+                int year = 1;
+                year <= 10; year++) {
             int populationChange = countryY / 1000 * (birthRate - mortalityRate);
             countryY += populationChange;
             System.out.println("Год " + year + ", численность населения составляет " + countryY);
@@ -77,11 +82,11 @@ public class Main {
         // а только каждый шестой. Должны быть видны накопления за 6-й, 12-й, 18-й, 24-й и следующие месяцы.
         double moneyT = 15_000;
         double totalMT = 0;
-        int a = 0;
+        int a = 1;
         for (; totalMT < 12_000_000; a++) {
             totalMT = (totalMT + (totalMT * 0.07));
             totalMT = totalMT + moneyT;
-            if (a == 6 || a == 12 || a == 18 || a == 24) {
+            if (a % 6 == 0) {
                 System.out.printf("Месяц %d, сумма накоплений равна %.2f рублей.%n", a, totalMT);
             }
         }
@@ -115,13 +120,12 @@ public class Main {
         // «Сегодня пятница, ...-е число. Необходимо подготовить отчет».
         //В нашем месяце 31 день.
         // В результате у вас должно получиться от 4 до 5 сообщений с напоминаниями по разным датам.
-        int friday = 1;
-        //      int reportingDay = 0;
+        int friday = 5;
         int month = 31;
-        int b = 0;
+        int b = friday;
         while (b < month) {
             b++;
-            if ((b - 5) % 7 == 0) {
+            if (b % 7 == 0) {
                 System.out.println("Сегодня пятница, " + b + "-е число. Необходимо подготовить отчет");
             }
         }
