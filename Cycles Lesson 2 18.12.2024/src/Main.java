@@ -10,14 +10,15 @@ public class Main {
         //Результат программы должен быть выведен в консоль с тем количеством месяцев,
         // которое необходимо для накопления данной суммы. Формат сообщения:
         // «Месяц …, сумма накоплений равна … рублей» .
-        double salary = 15_000;
-        double accumulation = 2_459_000;
-        double total = 0;
+        int accumulation = 2_459_000;
+        int total = 0;
+        int salary = 15_000;
+        double percent = 1D / 100;
         int s = 0;
         while (total < accumulation) {
+            total += salary;
+            total = (int) (total * (1 + percent));
             s++;
-            total = total + total / 100;
-            total = total + salary;
             System.out.println("Месяц " + s + ", сумма накоплений равна " + total + " рублей");
         }
         System.out.println();
@@ -34,10 +35,8 @@ public class Main {
             System.out.print(numA + " ");
         }
         System.out.println("\n");
-        int numB = 11;
-        for (; numB > 1; ) {
-            numB--;
-            System.out.print(numB + " ");
+        for (; numA >= 1; numA--) {
+            System.out.print(numA + " ");
         }
         System.out.println("\n");
 
@@ -51,11 +50,9 @@ public class Main {
         int countryY = 12_000_000;
         int birthRate = 17;
         int mortalityRate = 8;
-        for (
-                int year = 1;
-                year <= 10; year++) {
-            int populationChange = countryY / 1000 * (birthRate - mortalityRate);
-            countryY += populationChange;
+        int currentYear = 2024;
+        for (int year = currentYear; year < currentYear + 10; year++) {
+            countryY += countryY * birthRate / 1000 - countryY * mortalityRate / 1000;
             System.out.println("Год " + year + ", численность населения составляет " + countryY);
         }
         System.out.println();
@@ -67,13 +64,14 @@ public class Main {
         // чтобы собрать сумму в 12 миллионов рублей при условии, что процент банка от накоплений не меняется,
         // а всегда равен 7%.
         //Выведите в консоль результат программы с указанием суммы накоплений по каждому месяцу.
-        double money = 15_000;
-        double totalM = 0;
-        int i = 0;
-        for (; totalM < 12_000_000; i++) {
-            totalM = (totalM + (totalM * 0.07));
-            totalM = totalM + money;
-            System.out.println("Месяц " + i + " , сумма накоплений равна " + totalM + " рублей");
+        percent = 7D / 100;
+        total = salary;
+        accumulation = 12_000_000;
+        s = 0;
+        while (total < accumulation) {
+            total = (int) (total * (1 + percent));
+            s++;
+            System.out.println("Месяц " + s + " , сумма накоплений равна " + total + " рублей");
         }
         System.out.println();
 
@@ -130,6 +128,13 @@ public class Main {
             }
         }
         System.out.println();
+
+        System.out.println("Задача 7 №2");
+        int friday2 = 6;
+        int day = 5;
+        for (day = friday2; day <= 31; day +=7) {
+            System.out.println("Сегодня пятница, " + day + "-е число. Необходимо подготовить отчет");
+        }
 
         System.out.println("Задача 8");
         // Нам нужно написать астрономическое приложение, которое считает,
